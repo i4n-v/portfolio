@@ -1,0 +1,29 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:react/recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "prettier"
+  ],
+  "rules": {
+    // General rules
+    "no-unused-vars": "warn",
+    "no-console": "warn",
+    "consistent-return": "off",
+    "no-shadow": "off",
+
+    // Import plugin
+    "import/first": "error",
+    "import/no-amd": "error",
+    "import/no-webpack-loader-syntax": "error",
+
+    // Prettier
+    "prettier/prettier": 0,
+
+    // React eslint plugin specific rules
+    "react/jsx-props-no-spreading": "off",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }]
+  }
+}
