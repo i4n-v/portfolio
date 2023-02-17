@@ -1,0 +1,55 @@
+@mixin font($type) {
+  @if ($type == 'primary-xxl') {
+    font-family: var(--primary-font), sans-serif;
+    font-weight: 600;
+    font-size: rem(92);
+    line-height: rem(106);
+  } @else if ($type == 'primary-xl') {
+    font-family: var(--primary-font), sans-serif;
+    font-weight: 600;
+    font-size: rem(58);
+    line-height: rem(68);
+  } @else if ($type == 'primary-lg') {
+    font-family: var(--primary-font), sans-serif;
+    font-weight: 600;
+    font-size: rem(32);
+    line-height: rem(40);
+  } @else if ($type == 'primary-md') {
+    font-family: var(--primary-font), sans-serif;
+    font-weight: 500;
+    font-size: rem(18);
+    line-height: rem(24);
+  } @else if ($type == 'primary-sm') {
+    font-family: var(--primary-font), sans-serif;
+    font-weight: 600;
+    font-size: rem(14);
+    line-height: rem(20);
+  } @else if ($type == 'secondary-lg-b') {
+    font-family: var(--secondary-font), sans-serif;
+    font-weight: 500;
+    font-size: rem(24);
+    line-height: rem(36);
+    letter-spacing: 1.5%;
+    text-transform: uppercase;
+  } @else if ($type == 'secondary-md') {
+    font-family: var(--secondary-font), sans-serif;
+    font-weight: 400;
+    font-size: rem(16);
+    line-height: rem(24);
+  } @else if ($type == 'secondary-sm') {
+    font-family: var(--secondary-font), sans-serif;
+    font-weight: 400;
+    font-size: rem(14);
+    line-height: rem(20);
+  } @else if ($type == 'secondary-xs') {
+    font-family: var(--secondary-font), sans-serif;
+    font-weight: 400;
+    font-size: rem(12);
+    line-height: rem(18);
+  } @else if ($type == 'tertiary-md') {
+    font-family: var(--tertiary-font), sans-serif;
+    font-weight: 400;
+    font-size: rem(14);
+    line-height: rem(20);
+  }
+}
