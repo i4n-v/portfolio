@@ -9,6 +9,7 @@
   "rules": {
     // General rules
     "no-unused-vars": "warn",
+    "camelcase": "off",
     "no-console": "warn",
     "consistent-return": "off",
     "no-shadow": "off",
