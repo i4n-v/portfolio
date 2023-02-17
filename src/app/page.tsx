@@ -1,8 +1,10 @@
 import React from 'react';
-import { Inter } from '@next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+export const metadata = {
+  title: 'Ian Vinícius | Portifolio',
+  description: 'Desenvolvedor Full Stack, Next, React, React Native, Node e TypeScript.',
+};
 
 export default function Home() {
-  return <main>Hello World</main>;
+  return <main>Hello World my dick</main>;
 }
