@@ -1,0 +1,38 @@
+@use '../../../styles/variables.module';
+@use '../../../styles/mixins.module';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 96px;
+  padding: 20px;
+  background: rgba(variables.$secondary-0, 0.5);
+  backdrop-filter: blur(12px);
+  @include mixins.shadow('sm');
+
+  div {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    width: 100%;
+    max-width: 1280px;
+
+    & > a {
+      max-width: fit-content;
+      padding: 4px;
+    }
+  }
+
+  @include mixins.responsive('sm') {
+    display: none;
+  }
+}
+
+.menu {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fit, auto);
+  gap: 40px;
+}
