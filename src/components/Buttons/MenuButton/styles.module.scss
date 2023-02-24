@@ -1,0 +1,29 @@
+@use '../../../../styles/variables.module';
+@use '../../../../styles/mixins.module';
+
+.menuButton {
+  display: block;
+  position: relative;
+  @include mixins.font('primary-md');
+  color: variables.$secondary-10;
+  transition: 0.3s;
+
+  &:after {
+    content: '';
+    display: block;
+    width: 0;
+    border-radius: 2px;
+    margin-top: 4px;
+    height: 4px;
+    background: variables.$primary-07;
+    transition: 0.3s;
+  }
+
+  &:hover {
+    color: variables.$primary-07;
+
+    &:after {
+      width: 100%;
+    }
+  }
+}
