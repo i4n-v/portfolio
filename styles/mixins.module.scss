@@ -1,0 +1,92 @@
+@use './variables.module.scss';
+@use './functions.module.scss';
+
+@mixin font($type) {
+  @if ($type == 'primary-xxl') {
+    font-family: var(--primary-font), sans-serif;
+    font-weight: 600;
+    font-size: functions.rem(92);
+    line-height: functions.rem(106);
+  } @else if ($type == 'primary-xl') {
+    font-family: var(--primary-font), sans-serif;
+    font-weight: 600;
+    font-size: functions.rem(58);
+    line-height: functions.rem(68);
+  } @else if ($type == 'primary-lg') {
+    font-family: var(--primary-font), sans-serif;
+    font-weight: 600;
+    font-size: functions.rem(32);
+    line-height: functions.rem(40);
+  } @else if ($type == 'primary-md') {
+    font-family: var(--primary-font), sans-serif;
+    font-weight: 500;
+    font-size: functions.rem(18);
+    line-height: functions.rem(24);
+  } @else if ($type == 'primary-sm') {
+    font-family: var(--primary-font), sans-serif;
+    font-weight: 600;
+    font-size: functions.rem(14);
+    line-height: functions.rem(20);
+  } @else if ($type == 'secondary-lg-b') {
+    font-family: var(--secondary-font), sans-serif;
+    font-weight: 500;
+    font-size: functions.rem(24);
+    line-height: functions.rem(36);
+    letter-spacing: 1.5%;
+    text-transform: uppercase;
+  } @else if ($type == 'secondary-md') {
+    font-family: var(--secondary-font), sans-serif;
+    font-weight: 400;
+    font-size: functions.rem(16);
+    line-height: functions.rem(24);
+  } @else if ($type == 'secondary-sm') {
+    font-family: var(--secondary-font), sans-serif;
+    font-weight: 400;
+    font-size: functions.rem(14);
+    line-height: functions.rem(20);
+  } @else if ($type == 'secondary-xs') {
+    font-family: var(--secondary-font), sans-serif;
+    font-weight: 400;
+    font-size: functions.rem(12);
+    line-height: functions.rem(18);
+  } @else if ($type == 'tertiary-md') {
+    font-family: var(--tertiary-font), sans-serif;
+    font-weight: 400;
+    font-size: functions.rem(14);
+    line-height: functions.rem(20);
+  }
+}
+
+@mixin responsive($size) {
+  @if ($size == '2xl') {
+    @media (max-width: 1536px) {
+      @content;
+    }
+  } @else if ($size == 'xl') {
+    @media (max-width: 1280px) {
+      @content;
+    }
+  } @else if ($size == 'lg') {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  } @else if ($size == 'md') {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if ($size == 'sm') {
+    @media (max-width: 640px) {
+      @content;
+    }
+  } @else if ($size == 'xs') {
+    @media (max-width: 320px) {
+      @content;
+    }
+  }
+}
+
+@mixin shadow($type) {
+  @if ($type == 'sm') {
+    box-shadow: 0 1px 2px rgba(variables.$secondary-12, 0.1);
+  }
+}

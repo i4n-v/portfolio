@@ -1,0 +1,55 @@
+// primary colors
+$primary-04: #e4d9ee;
+$primary-05: #caafe3;
+$primary-06: #b180df;
+$primary-07: #9b51e0;
+$primary-08: #8824e6;
+$primary-09: #720ecf;
+$primary-10: #54079d;
+$primary-11: #38006c;
+$primary-12: #1e0052;
+
+// primary colors
+$secondary-0: #ffffff;
+$secondary-01: #f7f7f7;
+$secondary-02: #ededed;
+$secondary-03: #dedede;
+$secondary-04: #cccccc;
+$secondary-05: #b3b3b3;
+$secondary-06: #9c9c9c;
+$secondary-07: #707070;
+$secondary-08: #595959;
+$secondary-09: #404040;
+$secondary-10: #2e2e2e;
+$secondary-11: #121212;
+$secondary-12: #000000;
+
+// gradients
+$gradient-01: linear-gradient(180deg, $primary-07 0%, $primary-09 100%);
+$gradient-02: linear-gradient(180deg, $primary-09 0%, $primary-10 100%);
+
+:export {
+  primary04: $primary-04;
+  primary05: $primary-05;
+  primary06: $primary-06;
+  primary07: $primary-07;
+  primary08: $primary-08;
+  primary09: $primary-09;
+  primary10: $primary-10;
+  primary11: $primary-11;
+  primary12: $primary-12;
+  secondary0: $secondary-0;
+  secondary01: $secondary-01;
+  secondary02: $secondary-02;
+  secondary03: $secondary-03;
+  secondary04: $secondary-04;
+  secondary05: $secondary-05;
+  secondary06: $secondary-06;
+  secondary07: $secondary-07;
+  secondary08: $secondary-08;
+  secondary09: $secondary-09;
+  secondary10: $secondary-10;
+  secondary11: $secondary-11;
+  secondary12: $secondary-12;
+  gradient01: $gradient-01;
+}
