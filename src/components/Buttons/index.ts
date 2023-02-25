@@ -1,3 +1,4 @@
 import MenuButton from './MenuButton';
+import PrimaryButton from './PrimaryButton';
 
-export { MenuButton };
+export { MenuButton, PrimaryButton };

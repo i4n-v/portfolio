@@ -1,9 +1,10 @@
 import { MouseEventHandler, ReactNode } from 'react';
 
-type IMenuButtonProps = {
+type IPrimaryButtonProps = {
   href: string;
   children: ReactNode;
+  download?: boolean;
   onClick?: MouseEventHandler;
 };
 
-export default IMenuButtonProps;
+export default IPrimaryButtonProps;

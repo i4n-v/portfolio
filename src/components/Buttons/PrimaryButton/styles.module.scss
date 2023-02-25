@@ -1,0 +1,18 @@
+@use '../../../../styles/variables.module.scss';
+@use '../../../../styles/mixins.module.scss';
+
+.primaryButton {
+  display: inline-block;
+  padding: 16px 32px;
+  border-radius: 6px;
+  background: variables.$gradient-01;
+  text-transform: uppercase;
+  @include mixins.font('primary-sm');
+  color: variables.$secondary-0;
+  @include mixins.shadow('sm');
+  transition: 0.3s;
+
+  &:hover {
+    background: variables.$gradient-02;
+  }
+}
