@@ -1,0 +1,37 @@
+@use '../../../../styles/variables.module.scss';
+@use '../../../../styles/mixins.module.scss';
+
+.codeContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  background: variables.$secondary-0;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 360px;
+  padding: 40px;
+  @include mixins.shadow('sm');
+  color: variables.$secondary-11;
+
+  pre {
+    @include mixins.font('tertiary-md');
+  }
+
+  @include mixins.responsive('sm') {
+    padding: 20px;
+    width: auto;
+
+    pre {
+      @include mixins.font('tertiary-sm');
+    }
+  }
+}
+
+.order {
+  font-weight: 600;
+}
+
+.attribute {
+  @extend .order;
+  color: variables.$primary-07;
+}

@@ -1,0 +1,91 @@
+@use './variables.module.scss';
+@use './mixins.module.scss';
+
+.mainContainer {
+  padding-top: 96px;
+
+  @include mixins.responsive('sm') {
+    padding-top: 0;
+  }
+}
+
+.mainContainer :global(#introduction) {
+  display: flex;
+  justify-content: center;
+  padding: 72px 20px 140px 20px;
+  background: linear-gradient(171.9deg, variables.$secondary-11 66%, transparent 0%);
+
+  & > div {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    max-width: variables.$max-container;
+    width: 100%;
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      @include mixins.font('primary-xxl');
+      color: variables.$secondary-0;
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: -6px;
+        left: -36px;
+        width: 116.27px;
+        height: 110.53px;
+        background: url('../../public/icons/decorator.svg') no-repeat center;
+        background-size: 100%;
+      }
+
+      span {
+        color: variables.$primary-07;
+      }
+    }
+  }
+
+  @include mixins.responsive('xl') {
+    padding-bottom: 80px;
+
+    & > div {
+      h1 {
+        @include mixins.font('primary-xl');
+        max-width: 450px;
+
+        &:after {
+          width: 80px;
+          height: 70px;
+          top: -4px;
+          left: -26px;
+        }
+      }
+    }
+  }
+
+  @include mixins.responsive('lg') {
+    & > div {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+  }
+
+  @include mixins.responsive('sm') {
+    & > div {
+      h1 {
+        @include mixins.font('primary-lg');
+        max-width: 260px;
+
+        &:after {
+          width: 40px;
+          height: 30px;
+          top: 4px;
+          left: -12px;
+        }
+      }
+    }
+  }
+}
