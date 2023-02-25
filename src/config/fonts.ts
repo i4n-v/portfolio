@@ -16,7 +16,7 @@ const secondaryFont = Fira_Sans({
 
 const tertiaryFont = Fira_Code({
   variable: '--tertiary-font',
-  weight: ['400'],
+  weight: ['400', '600'],
   style: ['normal'],
   display: 'swap',
 });

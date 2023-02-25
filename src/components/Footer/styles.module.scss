@@ -2,21 +2,19 @@
 @use '../../../styles/mixins.module';
 
 .container {
-  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 96px;
-  padding: 0px 20px;
-  background: rgba(variables.$secondary-0, 0.8);
-  backdrop-filter: blur(16px);
-  @include mixins.shadow('sm');
-  z-index: 10;
+  min-height: 96px;
+  padding: 20px;
+  background: variables.$secondary-12;
 
   div {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr;
+    gap: 8px;
+    justify-items: center;
     align-items: center;
     width: 100%;
     max-width: variables.$max-container;
@@ -25,16 +23,21 @@
       max-width: fit-content;
       padding: 4px;
     }
+
+    p {
+      @include mixins.font('secondary-md');
+      color: variables.$secondary-0;
+      text-align: center;
+    }
   }
 
   @include mixins.responsive('sm') {
-    display: none;
-  }
-}
+    div {
+      grid-template-columns: 1fr;
 
-.menu {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(auto-fit, auto);
-  gap: 40px;
+      p {
+        @include mixins.font('secondary-sm');
+      }
+    }
+  }
 }

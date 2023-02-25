@@ -50,10 +50,15 @@
     font-size: functions.rem(12);
     line-height: functions.rem(18);
   } @else if ($type == 'tertiary-md') {
-    font-family: var(--tertiary-font), sans-serif;
+    font-family: var(--tertiary-font), monospace;
     font-weight: 400;
     font-size: functions.rem(14);
     line-height: functions.rem(20);
+  } @else if ($type == 'tertiary-sm') {
+    font-family: var(--tertiary-font), monospace;
+    font-weight: 400;
+    font-size: functions.rem(12);
+    line-height: functions.rem(18);
   }
 }
 
@@ -63,11 +68,11 @@
       @content;
     }
   } @else if ($size == 'xl') {
-    @media (max-width: 1280px) {
+    @media (max-width: 1200px) {
       @content;
     }
   } @else if ($size == 'lg') {
-    @media (max-width: 1024px) {
+    @media (max-width: 920px) {
       @content;
     }
   } @else if ($size == 'md') {

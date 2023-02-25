@@ -28,6 +28,9 @@ $secondary-12: #000000;
 $gradient-01: linear-gradient(180deg, $primary-07 0%, $primary-09 100%);
 $gradient-02: linear-gradient(180deg, $primary-09 0%, $primary-10 100%);
 
+//Sizes
+$max-container: 1280px;
+
 :export {
   primary04: $primary-04;
   primary05: $primary-05;
@@ -51,5 +54,4 @@ $gradient-02: linear-gradient(180deg, $primary-09 0%, $primary-10 100%);
   secondary10: $secondary-10;
   secondary11: $secondary-11;
   secondary12: $secondary-12;
-  gradient01: $gradient-01;
 }

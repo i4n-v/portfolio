@@ -1,6 +1,9 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { scrollTo } from '@/utils';
 import styles from './styles.module.scss';
 import { MenuButton } from '../Buttons';
 
@@ -15,14 +18,16 @@ export default function Header() {
   return (
     <header className={styles.container}>
       <div>
-        <Link href="/">
+        <Link href="#introduction" onClick={() => scrollTo('#introduction')}>
           <Image src="logo-dark.svg" alt="logo" width={67.22} height={24} />
         </Link>
         <nav>
           <ul className={styles.menu}>
             {links.map(({ name, href }) => (
               <li key={name}>
-                <MenuButton href={href}>{name}</MenuButton>
+                <MenuButton href={href} onClick={() => scrollTo(href)}>
+                  {name}
+                </MenuButton>
               </li>
             ))}
           </ul>

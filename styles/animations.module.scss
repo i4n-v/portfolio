@@ -1,1 +1,25 @@
-@use './variables.module.scss';
+.animeLeft {
+  opacity: 0;
+  transform: translateX(-60px);
+  animation: animeLeft 0.8s ease-in forwards;
+}
+
+@keyframes animeLeft {
+  to {
+    opacity: 1;
+    transform: initial;
+  }
+}
+
+.animeRight {
+  opacity: 0;
+  transform: translateX(+60px);
+  animation: animeRight 0.8s ease-in forwards;
+}
+
+@keyframes animeRight {
+  to {
+    opacity: 1;
+    transform: initial;
+  }
+}
