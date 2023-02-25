@@ -28,7 +28,7 @@ body {
 *::-webkit-scrollbar {
   width: 16px;
   height: 16px;
-  background: rgba(var(--bg-base-50));
+  background: variables.$secondary-01;
 }
 
 *::-webkit-scrollbar-thumb {

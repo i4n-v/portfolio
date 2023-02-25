@@ -9,7 +9,7 @@ const primaryFont = Poppins({
 
 const secondaryFont = Fira_Sans({
   variable: '--secondary-font',
-  weight: ['400', '500'],
+  weight: ['400', '500', '600'],
   style: ['normal'],
   display: 'swap',
 });
