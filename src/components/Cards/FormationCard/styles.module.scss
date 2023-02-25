@@ -1,0 +1,42 @@
+@use '../../../../styles/mixins.module.scss';
+@use '../../../../styles/variables.module.scss';
+
+.formationCard {
+  padding: 20px;
+  background: variables.$secondary-11;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 260px;
+  @include mixins.shadow('sm');
+
+  p {
+    position: relative;
+    @include mixins.font('primary-sm');
+    color: variables.$secondary-0;
+    margin-bottom: 8px;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 8px;
+      left: -12px;
+      width: 8px;
+      height: 4px;
+      border-radius: 1px;
+      background: variables.$gradient-01;
+    }
+  }
+
+  & > span {
+    display: inline-block;
+    @include mixins.font('secondary-xs');
+    color: variables.$secondary-06;
+    margin-bottom: 20px;
+  }
+
+  div {
+    display: flex;
+    gap: 8px;
+  }
+}
