@@ -336,6 +336,7 @@
     align-items: center;
     margin-top: 32px;
     grid-column: 1/-1;
+    margin-bottom: 20px;
 
     h3 {
       @include mixins.font('primary-md');
