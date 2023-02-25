@@ -13,7 +13,7 @@ const tecnologies = [
   'JavaScript',
   'Redis',
   'CSS',
-  'UI/UX',
+  'Figma',
 ];
 
 export default tecnologies;
