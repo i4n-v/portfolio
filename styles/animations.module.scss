@@ -27,7 +27,7 @@
 }
 
 .animeJump {
-  animation: animeJump 1s infinite alternate;
+  animation: animeJump 2s infinite alternate;
 }
 
 @keyframes animeJump {
@@ -40,7 +40,7 @@
 }
 
 .animeJumpReverse {
-  animation: animeJumpReverse 1s ease-in-out infinite alternate;
+  animation: animeJumpReverse 2s ease-in-out infinite alternate;
 }
 
 @keyframes animeJumpReverse {

@@ -1,11 +1,11 @@
 import React from 'react';
-import { CodeCard } from '@/components/Cards';
+import { CodeCard, FormationCard } from '@/components/Cards';
 import animations from '@/../styles/animations.module.scss';
 import { PrimaryButton } from '@/components/Buttons';
 import Image from 'next/image';
 import Link from 'next/link';
-import socialLinks from '@/mocks/socialLinks';
-import tecnologies from '@/mocks/tecnologies';
+import { socialLinks, tecnologies, formations, courses } from '@/mocks/';
+import CourseCard from '@/components/Cards/CourseCard';
 import styles from './styles.module.scss';
 
 export const metadata = {
@@ -28,7 +28,7 @@ export default function Home() {
       <section id="contact" aria-label="Contato" className={animations.animeRight}>
         <h2 className={styles.title}>Contato</h2>
         <span>localizado em Recife-PE &#128293;</span>
-        <p>
+        <p className={styles.description}>
           Interassado no meu trabalho ? Inicie uma conversa através do <span>linkedin</span>, ou
           envie me um <span>email</span>! :D
         </p>
@@ -70,6 +70,32 @@ export default function Home() {
             </li>
           </ul>
         </div>
+      </section>
+
+      <section id="formation" className={animations.animeRight}>
+        <h2 className={styles.title}>Formação</h2>
+        <p className={styles.description}>
+          Atualmente estou me graduando no curso superior de <span>Sistemas para Internet</span> no
+          Instituto Federal de Ciências e Tecnologia de Pernambuco <span>(IFPE)</span>. Mas, também,
+          sempre estou buscando me aperfeiçoar nas tecnologias de mercado.
+        </p>
+        <div>
+          {formations.map(({ name, period, institution, category }) => (
+            <FormationCard
+              key={name}
+              title={name}
+              subtitle={period}
+              tags={[institution, category]}
+            />
+          ))}
+        </div>
+        <div>
+          <Image src="/icons/courses.svg" alt="Cursos" width={32} height={32} />
+          <h3>Principais Cursos Intensivos</h3>
+        </div>
+        {courses.map(({ name, workload }) => (
+          <CourseCard title={name} workload={workload} />
+        ))}
       </section>
     </main>
   );

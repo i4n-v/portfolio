@@ -1,0 +1,10 @@
+@use '../../../styles/variables.module.scss';
+@use '../../../styles/mixins.module.scss';
+
+.tag {
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: variables.$primary-10;
+  @include mixins.font('secondary-xs');
+  color: variables.$secondary-0;
+}

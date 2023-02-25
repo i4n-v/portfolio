@@ -100,6 +100,16 @@
   }
 }
 
+.description {
+  @include mixins.font('secondary-md');
+  color: variables.$secondary-11;
+  max-width: 560px;
+
+  span {
+    font-weight: 600;
+  }
+}
+
 .mainContainer :global(#contact) {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -118,16 +128,6 @@
     margin-bottom: 40px;
     @include mixins.font('secondary-lg-b');
     color: variables.$secondary-08;
-  }
-
-  p {
-    @include mixins.font('secondary-md');
-    color: variables.$secondary-11;
-    max-width: 560px;
-
-    span {
-      font-weight: 600;
-    }
   }
 
   & > a {
@@ -180,6 +180,18 @@
 
     ul {
       grid-template-columns: 1fr;
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+
+      li {
+        a,
+        span {
+          @include mixins.font('secondary-sm');
+        }
+      }
     }
 
     & > span {
@@ -212,6 +224,27 @@
       margin: auto;
       justify-content: space-between;
     }
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: url('../../public/icons/decorator.svg') no-repeat center;
+    background-size: 100%;
+  }
+
+  &:before {
+    top: -60px;
+    right: 20px;
+  }
+
+  &:after {
+    bottom: -60px;
+    left: 20px;
   }
 
   $more: false;
@@ -256,10 +289,77 @@
     }
 
     @include mixins.responsive('sm') {
+      &:before,
+      &:after {
+        width: 60px;
+        height: 60px;
+      }
+
+      &:before {
+        top: -30px;
+      }
+
+      &:after {
+        bottom: -30px;
+      }
+
       img {
         width: 80px;
         height: 80px;
       }
+    }
+  }
+}
+
+.mainContainer :global(#formation) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 40px;
+  max-width: variables.$max-container;
+  margin: 0 auto;
+  padding: 120px 20px;
+
+  .title {
+    grid-column: 1/-1;
+    margin-bottom: 40px;
+  }
+
+  p + div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  & > p + div + div {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 32px;
+    grid-column: 1/-1;
+
+    h3 {
+      @include mixins.font('primary-md');
+      color: variables.$secondary-11;
+    }
+  }
+
+  @include mixins.responsive('lg') {
+    p,
+    p + div {
+      grid-column: 1/-1;
+      justify-content: flex-start;
+    }
+
+    p {
+      margin-bottom: 32px;
+    }
+  }
+
+  @include mixins.responsive('sm') {
+    grid-template-columns: 1fr;
+
+    p + div {
+      flex-direction: column;
     }
   }
 }
