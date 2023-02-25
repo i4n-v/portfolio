@@ -1,0 +1,31 @@
+@use '../../../../styles/mixins.module.scss';
+@use '../../../../styles/variables.module.scss';
+
+.courseCard {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: variables.$secondary-02;
+  border-radius: 6px;
+  width: 100%;
+  @include mixins.shadow('sm');
+
+  p {
+    position: relative;
+    @include mixins.font('secondary-xs');
+    color: variables.$secondary-11;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 6px;
+      left: -12px;
+      width: 8px;
+      height: 4px;
+      border-radius: 1px;
+      background: variables.$gradient-01;
+    }
+  }
+}
