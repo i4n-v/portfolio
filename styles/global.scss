@@ -3,8 +3,8 @@
 
 /* Resets */
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
 }
 
@@ -36,4 +36,8 @@ body {
   border-right: 3.2px solid variables.$secondary-01;
   background: variables.$primary-07;
   border-radius: 6.4px;
+}
+
+[data-scroll] {
+  opacity: 0;
 }

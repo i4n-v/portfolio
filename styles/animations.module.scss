@@ -2,7 +2,7 @@
 
 .animeLeft {
   opacity: 0;
-  transform: translateX(-60px);
+  transform: translate3d(-60px, 0, 0);
   animation: animeLeft 0.8s ease-in forwards;
 }
 
@@ -15,7 +15,7 @@
 
 .animeRight {
   opacity: 0;
-  transform: translateX(+60px);
+  transform: translate3d(+60px, 0, 0);
   animation: animeRight 0.8s ease-in forwards;
 }
 
@@ -32,10 +32,10 @@
 
 @keyframes animeJump {
   from {
-    transform: translateY(-10px);
+    transform: translate3d(0, -10px, 0);
   }
   to {
-    transform: translateY(+10px);
+    transform: translate3d(0, +10px, 0);
   }
 }
 
@@ -45,9 +45,9 @@
 
 @keyframes animeJumpReverse {
   from {
-    transform: translateY(+10px);
+    transform: translate3d(0, +10px, 0);
   }
   to {
-    transform: translateY(-10px);
+    transform: translate3d(0, -10px, 0);
   }
 }

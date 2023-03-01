@@ -11,7 +11,7 @@ export default function Header() {
   const links = [
     { name: 'Contato', href: '#contact' },
     { name: 'Formação', href: '#formation' },
-    { name: 'Experiências', href: '#experience' },
+    { name: 'Experiências', href: '#experiencies' },
     { name: 'Projetos', href: '#projects' },
   ];
 

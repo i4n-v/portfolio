@@ -1,0 +1,41 @@
+@use '../../../../styles/variables.module.scss';
+@use '../../../../styles/mixins.module.scss';
+
+.experiencieCard {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  background: variables.$secondary-0;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 360px;
+  min-height: 160px;
+  padding: 20px;
+  @include mixins.shadow('sm');
+
+  p {
+    @include mixins.font('secondary-xs');
+    color: variables.$secondary-09;
+    grid-column: 1/-1;
+  }
+
+  .title {
+    @include mixins.font('primary-sm');
+    color: variables.$secondary-11;
+    grid-column: 1;
+    align-self: center;
+  }
+
+  .title + span {
+    background: variables.$secondary-09;
+    align-self: center;
+  }
+
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    grid-column: 1/-1;
+    align-self: end;
+  }
+}

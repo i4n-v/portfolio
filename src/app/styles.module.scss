@@ -4,6 +4,7 @@
 
 .mainContainer {
   padding-top: 96px;
+  overflow-x: hidden;
 
   @include mixins.responsive('sm') {
     padding-top: 0;
@@ -284,7 +285,7 @@
       }
 
       @include mixins.responsive('sm') {
-        @include mixins.font('secondary-sm');
+        display: none;
       }
     }
 
@@ -345,13 +346,13 @@
   }
 
   @include mixins.responsive('lg') {
-    p,
-    p + div {
+    & > p,
+    & > p + div {
       grid-column: 1/-1;
       justify-content: flex-start;
     }
 
-    p {
+    & > p {
       margin-bottom: 32px;
     }
   }
@@ -359,8 +360,62 @@
   @include mixins.responsive('sm') {
     grid-template-columns: 1fr;
 
-    p + div {
+    & > p + div {
       flex-direction: column;
     }
+  }
+}
+
+.mainContainer :global(#experiencies) {
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(
+    5deg,
+    variables.$secondary-01 24.7%,
+    variables.$secondary-11 0%,
+    variables.$secondary-11 75.3%,
+    variables.$secondary-01 0%
+  );
+  padding: 120px 20px 180px 20px;
+
+  .title {
+    margin-bottom: 40px;
+    color: variables.$secondary-0;
+  }
+
+  & > div {
+    width: 100%;
+    max-width: variables.$max-container;
+
+    & > div {
+      display: flex;
+      gap: 40px;
+    }
+  }
+
+  @include mixins.responsive('lg') {
+    background: linear-gradient(
+      5deg,
+      variables.$secondary-01 9.4%,
+      variables.$secondary-11 0%,
+      variables.$secondary-11 90.6%,
+      variables.$secondary-01 0%
+    );
+
+    & > div {
+      & > div {
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+.mainContainer :global(#projects) {
+  padding: 120px 0px;
+
+  .title {
+    margin: 0 auto 40px auto;
+    max-width: variables.$max-container;
+    padding: 0 20px;
   }
 }

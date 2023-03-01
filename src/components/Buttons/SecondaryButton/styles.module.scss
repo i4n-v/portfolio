@@ -1,0 +1,19 @@
+@use '../../../../styles/variables.module.scss';
+@use '../../../../styles/mixins.module.scss';
+
+.secondaryButton {
+  display: inline-block;
+  padding: 16px 32px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  @include mixins.font('primary-sm');
+  color: variables.$primary-07;
+  @include mixins.shadow('sm');
+  border: 2px solid variables.$primary-07;
+  transition: 0.3s;
+
+  &:hover {
+    color: variables.$primary-09;
+    border-color: variables.$primary-09;
+  }
+}

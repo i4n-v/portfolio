@@ -1,0 +1,55 @@
+@use '../../../../styles/mixins.module.scss';
+@use '../../../../styles/variables.module.scss';
+
+.projectCard {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 20px;
+  border-radius: 6px;
+  height: 234px;
+  width: 100%;
+  max-width: 560px;
+  background: variables.$secondary-11;
+  @include mixins.shadow('sm');
+
+  .title {
+    clip-path: polygon(0 0, 100% 0, 100% 55%, 0 100%);
+    background: variables.$gradient-01;
+    border-radius: 6px;
+    grid-column: 1/-1;
+    padding: 20px;
+    margin: -20px -20px 16px -20px;
+
+    p {
+      @include mixins.font('primary-lg');
+      color: variables.$secondary-11;
+    }
+  }
+
+  & > p {
+    grid-column: 1/-1;
+    margin-bottom: 20px;
+    @include mixins.font('secondary-sm');
+    color: variables.$secondary-04;
+  }
+
+  p + div {
+    display: flex;
+    gap: 8px;
+    align-self: center;
+  }
+
+  a {
+    align-self: start;
+    justify-self: end;
+  }
+
+  @include mixins.responsive('sm') {
+    height: 300px;
+
+    p + div {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  }
+}
