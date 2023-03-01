@@ -7,6 +7,9 @@
   @include mixins.font('primary-md');
   color: variables.$secondary-10;
   transition: 0.3s;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 
   &:after {
     content: '';

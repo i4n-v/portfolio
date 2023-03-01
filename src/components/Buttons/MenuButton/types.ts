@@ -1,7 +1,6 @@
 import { MouseEventHandler, ReactNode } from 'react';
 
 type IMenuButtonProps = {
-  href: string;
   children: ReactNode;
   onClick?: MouseEventHandler;
 };

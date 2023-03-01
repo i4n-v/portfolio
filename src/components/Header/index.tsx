@@ -9,10 +9,10 @@ import { MenuButton } from '../Buttons';
 
 export default function Header() {
   const links = [
-    { name: 'Contato', href: '#contact' },
-    { name: 'Formação', href: '#formation' },
-    { name: 'Experiências', href: '#experiencies' },
-    { name: 'Projetos', href: '#projects' },
+    { name: 'Contato', id: '#contact' },
+    { name: 'Formação', id: '#formation' },
+    { name: 'Experiências', id: '#experiencies' },
+    { name: 'Projetos', id: '#projects' },
   ];
 
   return (
@@ -23,11 +23,9 @@ export default function Header() {
         </Link>
         <nav>
           <ul className={styles.menu}>
-            {links.map(({ name, href }) => (
+            {links.map(({ name, id }) => (
               <li key={name}>
-                <MenuButton href={href} onClick={() => scrollTo(href)}>
-                  {name}
-                </MenuButton>
+                <MenuButton onClick={() => scrollTo(id)}>{name}</MenuButton>
               </li>
             ))}
           </ul>
