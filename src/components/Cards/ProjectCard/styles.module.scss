@@ -1,55 +1,119 @@
 @use '../../../../styles/mixins.module.scss';
 @use '../../../../styles/variables.module.scss';
 
+@mixin rounded() {
+  border-radius: 6px 6px 0 0;
+}
+
+@mixin mdStyles() {
+  & > div + div > a {
+    @include mixins.font('secondary-xs');
+    padding: 8px 16px;
+  }
+
+  & > p {
+    @include mixins.font('secondary-sm');
+  }
+}
+
 .projectCard {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  padding: 20px;
-  border-radius: 6px;
-  height: 234px;
+  display: flex;
+  flex-direction: column;
+  height: 432px;
   width: 100%;
-  max-width: 560px;
-  background: variables.$secondary-11;
+  max-width: 360px;
+  background: variables.$secondary-0;
+  border-radius: 6px;
   @include mixins.shadow('sm');
 
-  .title {
-    clip-path: polygon(0 0, 100% 0, 100% 55%, 0 100%);
-    background: variables.$gradient-01;
-    border-radius: 6px;
-    grid-column: 1/-1;
-    padding: 20px;
-    margin: -20px -20px 16px -20px;
+  .imageContainer {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    @include mixins.shadow('sm');
+    @include rounded();
 
-    p {
+    div {
+      background: rgba($color: variables.$secondary-12, $alpha: 0.4);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include rounded();
+    }
+
+    img {
+      max-width: 100%;
+      height: 100%;
+    }
+
+    h4 {
       @include mixins.font('primary-lg');
-      color: variables.$secondary-11;
+      color: variables.$secondary-0;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 1;
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: -1px;
+        left: -14px;
+        width: 40px;
+        height: 40px;
+        background: url('../../../../public/icons/decorator.svg') no-repeat center;
+        background-size: 100%;
+      }
     }
   }
 
   & > p {
-    grid-column: 1/-1;
-    margin-bottom: 20px;
-    @include mixins.font('secondary-sm');
-    color: variables.$secondary-04;
+    margin: 20px 0;
+    @include mixins.font('secondary-md');
+    color: variables.$secondary-08;
+    padding: 0 20px;
   }
 
   p + div {
     display: flex;
+    flex-wrap: wrap-reverse;
     gap: 8px;
-    align-self: center;
+    margin-top: auto;
+    padding: 0 20px;
   }
 
-  a {
-    align-self: start;
-    justify-self: end;
+  & > div + div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0 20px;
+    margin: 20px 0;
   }
 
-  @include mixins.responsive('sm') {
-    height: 300px;
+  @media (max-width: 1165px) and (min-width: 920px) {
+    @include mdStyles();
+  }
 
-    p + div {
-      flex-wrap: wrap;
-      gap: 8px;
+  @media (max-width: 785px) and (min-width: 640px) {
+    @include mdStyles();
+  }
+
+  @media (max-width: 400px) {
+    @include mdStyles();
+
+    .imageContainer > h4 {
+      @include mixins.font('primary-md');
+
+      &:before {
+        width: 24px;
+        height: 24px;
+        top: -1px;
+        left: -9px;
+      }
     }
   }
 }

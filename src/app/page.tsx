@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { Carousel } from '@/components';
 import {
   CodeCard,
   FormationCard,
@@ -17,11 +16,6 @@ import { socialLinks, tecnologies, formations, courses, experiencies } from '@/m
 import projects from '@/mocks/projects';
 import { debounce } from '@/utils';
 import styles from './styles.module.scss';
-
-export const metadata = {
-  title: 'Ian Vinícius | Portifolio',
-  description: 'Desenvolvedor Full Stack, Next, React, React Native, Node e TypeScript.',
-};
 
 export default function Home() {
   useEffect(() => {
@@ -138,7 +132,7 @@ export default function Home() {
       <section id="experiencies" aria-labelledby="experiencies-title">
         <div data-scroll="animeLeft">
           <h2 id="experiencies-title" className={styles.title}>
-            Experiencias
+            Experiências
           </h2>
           <div>
             {experiencies.map(({ name, period, description, tecnologies }) => (
@@ -158,13 +152,18 @@ export default function Home() {
         <h2 id="projects-title" className={styles.title}>
           Projetos
         </h2>
-        <Carousel
-          data={projects}
-          keyExtractor={({ name }) => name}
-          renderItem={({ name, description, link, tecnologies }) => (
-            <ProjectCard title={name} description={description} link={link} tags={tecnologies} />
-          )}
-        />
+        <div>
+          {projects.map(({ name, description, githubUrl, imageSrc, url, tecnologies }) => (
+            <ProjectCard
+              title={name}
+              description={description}
+              imageSrc={imageSrc}
+              url={url}
+              githubUrl={githubUrl}
+              tags={tecnologies}
+            />
+          ))}
+        </div>
       </section>
     </main>
   );
