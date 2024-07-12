@@ -2,7 +2,9 @@ type IProject = {
   name: string;
   description: string;
   tecnologies: string[];
-  link: string;
+  imageSrc: string;
+  url: string;
+  githubUrl: string;
 };
 
 export default IProject;

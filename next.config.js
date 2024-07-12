@@ -4,7 +4,7 @@ const path = require('path');
 const nextConfig = {
   experimental: {
     appDir: true,
-    fontLoaders: [{ loader: '@next/font/google', options: { subsets: ['latin'] } }],
+    fontLoaders: [{ loader: '@next/font/google' }],
   },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],

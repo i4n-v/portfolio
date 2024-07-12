@@ -5,6 +5,7 @@ const primaryFont = Poppins({
   weight: ['500', '600'],
   style: ['normal'],
   display: 'swap',
+  subsets: ['latin'],
 });
 
 const secondaryFont = Fira_Sans({
@@ -12,6 +13,7 @@ const secondaryFont = Fira_Sans({
   weight: ['400', '500', '600'],
   style: ['normal'],
   display: 'swap',
+  subsets: ['latin'],
 });
 
 const tertiaryFont = Fira_Code({
@@ -19,6 +21,7 @@ const tertiaryFont = Fira_Code({
   weight: ['400', '600'],
   style: ['normal'],
   display: 'swap',
+  subsets: ['latin'],
 });
 
 const fonts = [primaryFont.variable, secondaryFont.variable, tertiaryFont.variable].join(' ');
