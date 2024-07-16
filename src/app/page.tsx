@@ -16,8 +16,17 @@ import { socialLinks, tecnologies, formations, courses, experiencies } from '@/m
 import projects from '@/mocks/projects';
 import { debounce } from '@/utils';
 import styles from './styles.module.scss';
+import TextField from '@/components/FormFields/TextField';
+import { useForm } from 'react-hook-form';
 
 export default function Home() {
+  const { register } = useForm({
+    defaultValues: {
+      project: '',
+      categories: [],
+    },
+  });
+
   useEffect(() => {
     const sections: any = document.querySelectorAll('[data-scroll]');
     const height = window.innerHeight * 0.7;
@@ -152,6 +161,14 @@ export default function Home() {
         <h2 id="projects-title" className={styles.title}>
           Projetos
         </h2>
+        <div>
+          <TextField
+            name="project"
+            placeholder="Buscar..."
+            register={register}
+            rightIcon={<Image src="/icons/search.svg" alt="search" width={32} height={32} />}
+          />
+        </div>
         <div>
           {projects.map(({ name, description, githubUrl, imageSrc, url, tecnologies }) => (
             <ProjectCard

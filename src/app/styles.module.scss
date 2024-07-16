@@ -419,26 +419,34 @@
     margin-bottom: 40px;
   }
 
-  & > div {
+  & > div:nth-child(2) {
+    display: grid;
+    grid-template-columns: minmax(200px, 360px) minmax(200px, 480px);
+    margin: 40px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid variables.$secondary-02;
+  }
+
+  & > div:nth-child(3) {
     display: grid;
     grid-template-columns: repeat(3, minmax(260px, 1fr));
     gap: 40px;
   }
 
   @include mixins.responsive('lg') {
-    & > div {
+    & > div:nth-child(3) {
       grid-template-columns: repeat(2, minmax(260px, 1fr));
     }
   }
 
   @include mixins.responsive('md') {
-    & > div {
+    & > div:nth-child(3) {
       gap: 20px;
     }
   }
 
   @include mixins.responsive('sm') {
-    & > div {
+    & > div:nth-child(3) {
       grid-template-columns: minmax(260px, 1fr);
     }
   }
