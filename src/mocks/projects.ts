@@ -16,7 +16,7 @@ const projects: IProject[] = [
       'Docker',
     ],
     imageSrc: '/images/booked.jpg',
-    url: 'https://booked-library.netlify.app/',
+    url: 'https://booked-library.vercel.app/',
     githubUrl: 'https://github.com/i4n-v/booked',
   },
   {
@@ -24,7 +24,7 @@ const projects: IProject[] = [
     description: `Rescue é uma plataforma onde as pessoas postam e alertam instituições sobre possíveis causas de desastres pluviais.`,
     tecnologies: ['Svelte', 'PHP', 'Mysql', 'HTML', 'CSS', 'Figma'],
     imageSrc: '/images/rescue.jpg',
-    url: 'https://rescue-blog.netlify.app',
+    url: 'https://rescue-blog.vercel.app/',
     githubUrl: 'https://github.com/i4n-v/Rescue',
   },
   {
@@ -32,15 +32,15 @@ const projects: IProject[] = [
     description: `É um web-site para promoção de bicicletas modernas feitas a mão, com todo o detalhamento e segurança.`,
     tecnologies: ['React', 'Styled-components', 'TypeScript', 'Figma'],
     imageSrc: '/images/bikcraft.jpg',
-    url: 'https://bikcratft.netlify.app',
+    url: 'https://bikcraft-shopping.vercel.app/',
     githubUrl: 'https://github.com/i4n-v/Bikcraft',
   },
   {
-    name: 'Dogs media',
+    name: 'Dogs',
     description: `Uma rede social voltada especialmente para você mimar o seu pet e o mostrar ao mundo! :P`,
     tecnologies: ['React', 'CSS modules'],
     imageSrc: '/images/dogs.jpg',
-    url: 'https://dogs-media.netlify.app',
+    url: 'https://media-dogs.vercel.app/',
     githubUrl: 'https://github.com/i4n-v/Dogs',
   },
   {
@@ -48,7 +48,7 @@ const projects: IProject[] = [
     description: `Um Dashboard de organização e gestão financeira, para a tomada de decisão do seu negócio!`,
     tecnologies: ['React', 'Redux', 'CSS modules'],
     imageSrc: '/images/fintech.jpg',
-    url: 'https://fintech-panel.netlify.app/',
+    url: 'https://fintech-panel.vercel.app/',
     githubUrl: 'https://github.com/i4n-v/fintech',
   },
   {
@@ -56,7 +56,7 @@ const projects: IProject[] = [
     description: `O jogo clássico da forca, onde dois jogadores advinham as palavras para sobreviver.`,
     tecnologies: ['Svelte', 'HTML', 'CSS', 'Figma'],
     imageSrc: '/images/forca.jpg',
-    url: 'https://forca-game.netlify.app',
+    url: 'https://play-forca.vercel.app/',
     githubUrl: 'https://dogs-media.netlify.app',
   },
   {
@@ -64,7 +64,7 @@ const projects: IProject[] = [
     description: 'Uma landingpage com tudo que o Grid layout pode oferecer.',
     tecnologies: ['HTML', 'CSS', 'JavaScript'],
     imageSrc: '/images/wildbeast.jpg',
-    url: 'https://app.netlify.com/sites/wildbeast-grid-design/',
+    url: 'https://wildbeast-grid-design.vercel.app/',
     githubUrl: 'https://github.com/i4n-v/Wildbeast',
   },
   {
@@ -73,7 +73,7 @@ const projects: IProject[] = [
       'Uma simples landingpage com tudo que o HTML, CSS e JavaScript podem oferecer. :`)',
     tecnologies: ['HTML', 'CSS', 'JavaScript'],
     imageSrc: '/images/fantastic-animals.jpg',
-    url: 'https://fantastic-animals-blog.netlify.app',
+    url: 'https://fantastic-animals-blog.vercel.app/',
     githubUrl: 'https://github.com/i4n-v/fantastic-animals',
   },
 ];
