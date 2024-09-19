@@ -1,15 +1,14 @@
 import { ComponentProps, ReactNode } from 'react';
-import { RegisterOptions, UseFormRegister, UseFormRegisterReturn } from 'react-hook-form';
+import { Control } from 'react-hook-form';
 
-type ITextFieldPropsToOmit = 'id' | keyof RegisterOptions<any> | keyof UseFormRegisterReturn<any>;
+type ITextFieldPropsToOmit = 'id';
 
 interface ITextFieldProps extends Omit<ComponentProps<'input'>, ITextFieldPropsToOmit> {
   name: string;
   label?: string;
-  register: UseFormRegister<any>;
-  registerOptions?: RegisterOptions<any>;
+  control?: Control<any, any>;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
 }
 
-export default ITextFieldProps;
+export type { ITextFieldProps, ITextFieldPropsToOmit };

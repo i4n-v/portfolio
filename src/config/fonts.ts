@@ -1,4 +1,4 @@
-import { Poppins, Fira_Sans, Fira_Code } from '@next/font/google';
+import { Poppins, Fira_Sans, Fira_Code } from 'next/font/google';
 
 const primaryFont = Poppins({
   variable: '--primary-font',

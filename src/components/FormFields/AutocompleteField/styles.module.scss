@@ -1,0 +1,33 @@
+@use '../../../../styles/variables.module';
+@use '../../../../styles/mixins.module';
+
+.inputContainer {
+  position: relative;
+
+  & > ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 200px;
+    background-color: variables.$secondary-0;
+    border-radius: 0 0 6px 6px;
+    overflow-y: auto;
+    position: absolute;
+    left: 0;
+    top: 46px;
+    z-index: 1000;
+    @include mixins.shadow('sm');
+
+    & > li {
+      @include mixins.font('secondary-sm');
+      color: variables.$secondary-08;
+      padding: 12px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    & > li:hover {
+      background-color: variables.$primary-04;
+    }
+  }
+}

@@ -18,12 +18,13 @@ import { debounce } from '@/utils';
 import styles from './styles.module.scss';
 import TextField from '@/components/FormFields/TextField';
 import { useForm } from 'react-hook-form';
+import { AutocompleteField } from '@/components/FormFields';
 
 export default function Home() {
-  const { register } = useForm({
+  const { control } = useForm({
     defaultValues: {
       project: '',
-      categories: [],
+      categories: null,
     },
   });
 
@@ -72,8 +73,8 @@ export default function Home() {
           Baixar currículo
         </PrimaryButton>
         <ul>
-          {socialLinks.map(({ icon, alt, name, href }) => (
-            <li key={href}>
+          {socialLinks.map(({ icon, alt, name, href }, index) => (
+            <li key={`${name}-${index}`}>
               <Image src={icon} alt={alt} width={32} height={32} />
               {href ? <Link href={href}>{name}</Link> : <span>{name}</span>}
             </li>
@@ -134,7 +135,7 @@ export default function Home() {
           <h3>Principais Cursos Intensivos</h3>
         </div>
         {courses.map(({ name, workload }) => (
-          <CourseCard title={name} workload={workload} />
+          <CourseCard key={name} title={name} workload={workload} />
         ))}
       </section>
 
@@ -165,13 +166,50 @@ export default function Home() {
           <TextField
             name="project"
             placeholder="Buscar..."
-            register={register}
+            control={control}
             rightIcon={<Image src="/icons/search.svg" alt="search" width={32} height={32} />}
+          />
+          <AutocompleteField
+            name="categories"
+            control={control}
+            optionCompareKey="id"
+            optionLabelKey="name"
+            options={[
+              {
+                id: 1,
+                name: 'Opção 1',
+              },
+              {
+                id: 2,
+                name: 'Opção 2',
+              },
+              {
+                id: 3,
+                name: 'Opção 3',
+              },
+              {
+                id: 4,
+                name: 'Opção 4',
+              },
+              {
+                id: 5,
+                name: 'Opção 5',
+              },
+              {
+                id: 6,
+                name: 'Opção 6',
+              },
+              {
+                id: 7,
+                name: 'Opção 7',
+              },
+            ]}
           />
         </div>
         <div>
           {projects.map(({ name, description, githubUrl, imageSrc, url, tecnologies }) => (
             <ProjectCard
+              key={name}
               title={name}
               description={description}
               imageSrc={imageSrc}
