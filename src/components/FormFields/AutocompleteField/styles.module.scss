@@ -4,6 +4,15 @@
 .inputContainer {
   position: relative;
 
+  &[data-has-selected-options='true'] > div > input + label {
+    top: -12px;
+    left: 12px;
+    background: linear-gradient(360deg, white 0% 60%, transparent 60% 100%);
+    @include mixins.font('secondary-sm');
+    color: variables.$secondary-08;
+    cursor: default;
+  }
+
   & > ul {
     display: flex;
     flex-direction: column;
@@ -24,10 +33,48 @@
       padding: 12px;
       transition: 0.3s;
       cursor: pointer;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid variables.$secondary-02;
+      }
     }
 
-    & > li:hover {
+    &[data-has-options='true'] > li:hover,
+    & > li[data-selected='true'] {
       background-color: variables.$primary-04;
+    }
+
+    &[data-has-options='false'] > li {
+      cursor: default;
+      color: variables.$primary-07;
+    }
+  }
+}
+
+.selectedOptions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  & > li {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    background-color: variables.$secondary-02;
+    @include mixins.font('secondary-xs');
+    color: variables.$secondary-08;
+    white-space: nowrap;
+
+    & > img {
+      cursor: pointer;
+      border-radius: 100%;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: variables.$primary-05;
+      }
     }
   }
 }

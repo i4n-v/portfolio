@@ -14,15 +14,13 @@ export default function AutocompleteField<T extends Record<string, any>>({
   optionLabelKey,
   optionValueKey,
   optionCompareKey,
-  emptyMessage,
+  emptyMessage = 'Nenhum item encontrado',
   ...props
 }: IAutocompleteFieldProps<T>) {
   const { field } = useController({ name, control });
-  const [focused, setFocused] = useState(false);
+  const [open, setOpen] = useState(false);
   const [textValue, setTextValue] = useState<string>('');
   const [filteredOptions, setFilteredOptions] = useState<T[]>(options);
-
-  console.log(field.value);
 
   const optionIdentifier = useMemo(() => {
     return optionCompareKey || optionLabelKey;
@@ -128,30 +126,70 @@ export default function AutocompleteField<T extends Record<string, any>>({
     return false;
   }
 
-  function toggleFocus() {
-    setFocused((focused) => !focused);
+  function toggleOpen() {
+    if (open) {
+      return setTimeout(() => setOpen(false), 100);
+    }
+
+    setOpen(true);
   }
 
+  const SelectedOptions = () => {
+    return (
+      <ul className={styles.selectedOptions}>
+        {field.value.map((item: any, index: number) => {
+          let selectedOption = item;
+
+          if (optionValueKey) {
+            selectedOption = options.find((option) => {
+              return accessObjectByString(option, optionValueKey) === item;
+            });
+          }
+
+          return (
+            <li
+              key={
+                optionCompareKey
+                  ? accessObjectByString(selectedOption, optionCompareKey)
+                  : `autocomplete-selected-option-${index}`
+              }
+            >
+              <span>{accessObjectByString(selectedOption, optionLabelKey)}</span>
+              <Image
+                src="/icons/close.svg"
+                alt="remover"
+                width={14}
+                height={14}
+                onClick={() => handleChange(item)}
+              />
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
+
   return (
-    <div className={styles.inputContainer}>
+    <div className={styles.inputContainer} data-has-selected-options={!!field.value?.length}>
       <TextField
         name={name}
         value={textValue}
         rightIcon={
           <Image
-            src={focused ? '/icons/arrow-down.svg' : '/icons/arrow-up.svg'}
+            src={open ? '/icons/arrow-down.svg' : '/icons/arrow-up.svg'}
             alt="arrow"
             width={32}
             height={32}
           />
         }
+        leftIcon={multiple && <SelectedOptions />}
         onChange={filterOptionsByText}
-        onFocus={toggleFocus}
-        onBlur={toggleFocus}
+        onFocus={toggleOpen}
+        onBlur={toggleOpen}
         {...props}
       />
-      {focused && (
-        <ul>
+      {open && (
+        <ul data-has-options={!!filteredOptions.length}>
           {filteredOptions.map((option, index) => (
             <li
               key={
@@ -165,6 +203,7 @@ export default function AutocompleteField<T extends Record<string, any>>({
               {accessObjectByString(option, optionLabelKey)}
             </li>
           ))}
+          {!filteredOptions.length && <li>{emptyMessage}</li>}
         </ul>
       )}
     </div>

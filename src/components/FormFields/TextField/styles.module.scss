@@ -3,6 +3,17 @@
 
 .inputContainer {
   position: relative;
+  cursor: text;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: 1px solid variables.$primary-05;
+  background: variables.$secondary-0;
+  transition: 0.3s;
+  @include mixins.shadow('sm');
 
   & > label {
     @include mixins.font('secondary-md');
@@ -11,31 +22,17 @@
     left: 12px;
     top: 8px;
     transition: 0.2s;
+    cursor: text;
   }
 
   & > input {
     width: 100%;
-    height: 40px;
-    padding: 0 12px;
-    border-radius: 6px;
-    border: 1px solid variables.$primary-05;
-    background: variables.$secondary-0;
+    height: 100%;
     @include mixins.font('secondary-md');
     color: variables.$secondary-07;
     outline: none;
-    transition: 0.3s;
-  }
-
-  & > input[data-left-icon='true'] {
-    padding-left: 44px;
-  }
-
-  & > input[data-right-icon='true'] {
-    padding-right: 44px;
-  }
-
-  & > input[data-left-icon='true'] + label {
-    left: 44px;
+    border: none;
+    background-color: transparent;
   }
 
   & > input::placeholder {
@@ -43,31 +40,18 @@
     color: variables.$secondary-06;
   }
 
-  & > input:hover,
-  & > input:focus {
+  &:hover,
+  &:focus-within {
     box-shadow: 0 0 0 3px variables.$primary-04;
   }
 
   & > input:focus + label,
   & > input:not(:placeholder-shown) + label {
-    top: -10px;
+    top: -12px;
     left: 12px;
     background: linear-gradient(360deg, white 0% 60%, transparent 60% 100%);
     @include mixins.font('secondary-sm');
     color: variables.$secondary-08;
-  }
-
-  & > .leftIcon {
-    position: absolute;
-    max-width: max-content;
-    top: 5px;
-    left: 12px;
-  }
-
-  & > .rightIcon {
-    position: absolute;
-    max-width: max-content;
-    top: 5px;
-    right: 12px;
+    cursor: default;
   }
 }

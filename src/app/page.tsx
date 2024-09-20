@@ -24,7 +24,7 @@ export default function Home() {
   const { control } = useForm({
     defaultValues: {
       project: '',
-      categories: null,
+      categories: [],
     },
   });
 
@@ -170,8 +170,10 @@ export default function Home() {
             rightIcon={<Image src="/icons/search.svg" alt="search" width={32} height={32} />}
           />
           <AutocompleteField
+            label="Tecnologias"
             name="categories"
             control={control}
+            multiple
             optionCompareKey="id"
             optionLabelKey="name"
             options={[

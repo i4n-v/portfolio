@@ -41,11 +41,10 @@ export default function TextField({
 
   return (
     <div className={styles.inputContainer}>
+      {leftIcon}
       <input
         id={name}
         placeholder={placeholder ?? ''}
-        data-left-icon={!!leftIcon}
-        data-right-icon={!!rightIcon}
         value={value}
         {...registerSettings}
         {...props}
@@ -58,8 +57,7 @@ export default function TextField({
           <span>{required ? '*' : ''}</span>
         </label>
       )}
-      {leftIcon && <div className={styles.leftIcon}>{leftIcon}</div>}
-      {rightIcon && <div className={styles.rightIcon}>{rightIcon}</div>}
+      {rightIcon}
     </div>
   );
 }
