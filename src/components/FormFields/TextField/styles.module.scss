@@ -7,15 +7,24 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  height: 40px;
-  padding: 0 12px;
+  width: 100%;
+  min-height: 40px;
+  padding: 4px 12px;
   border-radius: 6px;
   border: 1px solid variables.$primary-05;
   background: variables.$secondary-0;
   transition: 0.3s;
   @include mixins.shadow('sm');
 
-  & > label {
+  & > div {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+
+  & > div > label {
     @include mixins.font('secondary-md');
     color: variables.$secondary-07;
     position: absolute;
@@ -25,9 +34,9 @@
     cursor: text;
   }
 
-  & > input {
-    width: 100%;
-    height: 100%;
+  & > div > input {
+    flex: 1;
+    min-width: 20%;
     @include mixins.font('secondary-md');
     color: variables.$secondary-07;
     outline: none;
@@ -35,7 +44,7 @@
     background-color: transparent;
   }
 
-  & > input::placeholder {
+  & > div > input::placeholder {
     @include mixins.font('secondary-md');
     color: variables.$secondary-06;
   }
@@ -45,8 +54,8 @@
     box-shadow: 0 0 0 3px variables.$primary-04;
   }
 
-  & > input:focus + label,
-  & > input:not(:placeholder-shown) + label {
+  & > div > input:focus + label,
+  & > div > input:not(:placeholder-shown) + label {
     top: -12px;
     left: 12px;
     background: linear-gradient(360deg, white 0% 60%, transparent 60% 100%);

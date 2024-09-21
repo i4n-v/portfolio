@@ -1,4 +1,5 @@
 import { getAgeByDate } from '@/utils';
+import { NextResponse } from 'next/server';
 
 function GET() {
   const owner = {
@@ -7,7 +8,7 @@ function GET() {
     stacks: ['UI/UX', 'Front End', 'Back End'],
   };
 
-  return Response.json(owner);
+  return NextResponse.json(owner);
 }
 
 export { GET };

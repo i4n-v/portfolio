@@ -12,4 +12,12 @@ interface IAutocompleteFieldProps<T> extends Omit<ITextFieldProps, 'type'> {
   emptyMessage?: string;
 }
 
-export default IAutocompleteFieldProps;
+interface ISelectedOptions {
+  options: any[];
+}
+
+interface ISelectionIndicator {
+  onClear(): void;
+}
+
+export type { IAutocompleteFieldProps, ISelectedOptions, ISelectionIndicator };

@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import styles from './styles.module.scss';
-import IAutocompleteFieldProps from './types';
-import TextField from '../TextField';
 import Image from 'next/image';
 import { useController } from 'react-hook-form';
 import { accessObjectByString } from '@/utils';
+import styles from './styles.module.scss';
+import { IAutocompleteFieldProps, ISelectedOptions, ISelectionIndicator } from './types';
+import TextField from '../TextField';
 
 export default function AutocompleteField<T extends Record<string, any>>({
   name,
@@ -22,9 +22,10 @@ export default function AutocompleteField<T extends Record<string, any>>({
   const [textValue, setTextValue] = useState<string>('');
   const [filteredOptions, setFilteredOptions] = useState<T[]>(options);
 
-  const optionIdentifier = useMemo(() => {
-    return optionCompareKey || optionLabelKey;
-  }, [optionCompareKey, optionLabelKey]);
+  const optionIdentifier = useMemo(
+    () => optionCompareKey || optionLabelKey,
+    [optionCompareKey, optionLabelKey]
+  );
 
   useEffect(() => {
     if (field.value instanceof Object && !multiple) {
@@ -41,10 +42,8 @@ export default function AutocompleteField<T extends Record<string, any>>({
   }, [field.value, optionLabelKey]);
 
   function filterOptionsByText({ target: { value } }: React.ChangeEvent<HTMLInputElement>) {
-    const newValue = field.value && textValue !== value ? textValue : value;
-
-    if (newValue) {
-      const regex = new RegExp(newValue, 'i');
+    if (value) {
+      const regex = new RegExp(value, 'i');
       const searchedOptions = options.filter((item) =>
         regex.test(accessObjectByString(item, optionLabelKey))
       );
@@ -53,9 +52,9 @@ export default function AutocompleteField<T extends Record<string, any>>({
       setFilteredOptions(options);
     }
 
-    setTextValue(newValue);
+    setTextValue(value);
 
-    if (field.value) field.onChange(null);
+    if (field.value && !multiple) field.onChange(null);
   }
 
   function handleChange(item: T) {
@@ -126,6 +125,11 @@ export default function AutocompleteField<T extends Record<string, any>>({
     return false;
   }
 
+  function clearInput() {
+    field.onChange(null);
+    setTextValue('');
+  }
+
   function toggleOpen() {
     if (open) {
       return setTimeout(() => setOpen(false), 100);
@@ -134,20 +138,23 @@ export default function AutocompleteField<T extends Record<string, any>>({
     setOpen(true);
   }
 
-  const SelectedOptions = () => {
+  function SelectedOptions({ options }: ISelectedOptions) {
+    if (!Array.isArray(options)) return null;
+
     return (
-      <ul className={styles.selectedOptions}>
-        {field.value.map((item: any, index: number) => {
+      <>
+        {options.map((item: any, index: number) => {
           let selectedOption = item;
 
           if (optionValueKey) {
-            selectedOption = options.find((option) => {
-              return accessObjectByString(option, optionValueKey) === item;
-            });
+            selectedOption = options.find(
+              (option) => accessObjectByString(option, optionValueKey) === item
+            );
           }
 
           return (
-            <li
+            <div
+              className={styles.selectedOptions}
               key={
                 optionCompareKey
                   ? accessObjectByString(selectedOption, optionCompareKey)
@@ -158,31 +165,49 @@ export default function AutocompleteField<T extends Record<string, any>>({
               <Image
                 src="/icons/close.svg"
                 alt="remover"
+                className={styles.iconSelection}
                 width={14}
                 height={14}
                 onClick={() => handleChange(item)}
               />
-            </li>
+            </div>
           );
         })}
-      </ul>
+      </>
     );
-  };
+  }
+
+  function SelectionIndicator({ onClear }: ISelectionIndicator) {
+    return (
+      <div className={styles.selectionIndicator}>
+        <Image
+          src="/icons/close.svg"
+          alt="remover"
+          className={styles.iconSelection}
+          width={18}
+          height={18}
+          onClick={onClear}
+        />
+        <Image
+          src={open ? '/icons/arrow-down.svg' : '/icons/arrow-up.svg'}
+          alt="arrow"
+          width={32}
+          height={32}
+        />
+      </div>
+    );
+  }
 
   return (
-    <div className={styles.inputContainer} data-has-selected-options={!!field.value?.length}>
+    <div
+      className={styles.inputContainer}
+      data-has-selected-options={(!multiple && !!field.value) || !!field.value?.length}
+    >
       <TextField
         name={name}
         value={textValue}
-        rightIcon={
-          <Image
-            src={open ? '/icons/arrow-down.svg' : '/icons/arrow-up.svg'}
-            alt="arrow"
-            width={32}
-            height={32}
-          />
-        }
-        leftIcon={multiple && <SelectedOptions />}
+        rightIcon={<SelectionIndicator onClear={clearInput} />}
+        leftIcon={<SelectedOptions options={field.value} />}
         onChange={filterOptionsByText}
         onFocus={toggleOpen}
         onBlur={toggleOpen}

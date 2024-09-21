@@ -3,14 +3,24 @@
 
 .inputContainer {
   position: relative;
+  width: 100%;
 
-  &[data-has-selected-options='true'] > div > input + label {
+  &[data-has-selected-options='true'] > div > div > input + label {
     top: -12px;
     left: 12px;
     background: linear-gradient(360deg, white 0% 60%, transparent 60% 100%);
     @include mixins.font('secondary-sm');
     color: variables.$secondary-08;
     cursor: default;
+  }
+
+  &[data-has-selected-options='true']:hover .selectionIndicator > img:nth-child(1),
+  &[data-has-selected-options='true']:focus-within .selectionIndicator > img:nth-child(1) {
+    display: block;
+  }
+
+  & > div > div {
+    gap: 4px;
   }
 
   & > ul {
@@ -23,7 +33,8 @@
     overflow-y: auto;
     position: absolute;
     left: 0;
-    top: 46px;
+    bottom: -2px;
+    transform: translateY(100%);
     z-index: 1000;
     @include mixins.shadow('sm');
 
@@ -51,30 +62,36 @@
   }
 }
 
+.iconSelection {
+  cursor: pointer;
+  border-radius: 100%;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: variables.$primary-05;
+  }
+}
+
+.selectionIndicator {
+  flex: 0 !important;
+  display: flex;
+  flex-wrap: nowrap !important;
+  gap: 0px !important;
+
+  & > img:nth-child(1) {
+    display: none;
+    transition: 0.3s;
+  }
+}
+
 .selectedOptions {
   display: flex;
   align-items: center;
   gap: 4px;
-
-  & > li {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding: 4px 6px;
-    border-radius: 6px;
-    background-color: variables.$secondary-02;
-    @include mixins.font('secondary-xs');
-    color: variables.$secondary-08;
-    white-space: nowrap;
-
-    & > img {
-      cursor: pointer;
-      border-radius: 100%;
-      transition: 0.3s;
-
-      &:hover {
-        background-color: variables.$primary-05;
-      }
-    }
-  }
+  padding: 4px 6px;
+  border-radius: 6px;
+  background-color: variables.$secondary-02;
+  @include mixins.font('secondary-xs');
+  color: variables.$secondary-08;
+  white-space: nowrap;
 }
