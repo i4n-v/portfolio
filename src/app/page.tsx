@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import {
   CodeCard,
   FormationCard,
@@ -14,25 +14,39 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { socialLinks, tecnologies, formations, courses, experiencies } from '@/mocks/';
 import projects from '@/mocks/projects';
-import { debounce } from '@/utils';
 import styles from './styles.module.scss';
 import TextField from '@/components/FormFields/TextField';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { AutocompleteField } from '@/components/FormFields';
+import projectTecnologies from '@/mocks/projectTecnologies';
+import { useDebounce, useDebounceCallBack } from '@/hooks';
+import { z } from 'zod';
+
+const validations = z.object({
+  project: z.string(),
+  tecnologies: z.array(
+    z.object({
+      id: z.number(),
+      name: z.string(),
+    })
+  ),
+});
+
+type IFilters = z.infer<typeof validations>;
 
 export default function Home() {
-  const { control } = useForm({
+  const { control } = useForm<IFilters>({
     defaultValues: {
       project: '',
-      categories: [],
+      tecnologies: [],
     },
   });
 
-  useEffect(() => {
-    const sections: any = document.querySelectorAll('[data-scroll]');
-    const height = window.innerHeight * 0.7;
+  const filters = useWatch({ control });
+  const debouncedFilters = useDebounce(filters, 500);
 
-    const animateSections = debounce(() => {
+  const animateSections = useCallback(
+    useDebounceCallBack((sections, height) => {
       sections.forEach((section: HTMLElement) => {
         const sectionTop = section.getBoundingClientRect().top;
         const sectionIsVisible = sectionTop - height < 0;
@@ -41,15 +55,49 @@ export default function Home() {
           section.classList.add(animations[section.dataset.scroll || '']);
         }
       });
-    }, 200);
+    }, 200),
+    []
+  );
+
+  useEffect(() => {
+    const sections: any = document.querySelectorAll('[data-scroll]');
+    const height = window.innerHeight * 0.7;
+
+    function handleAnimateSections() {
+      animateSections(sections, height);
+    }
 
     if (sections.length) {
-      window.addEventListener('scroll', animateSections);
-      animateSections();
+      window.addEventListener('scroll', handleAnimateSections);
+      handleAnimateSections();
 
-      return () => window.removeEventListener('scroll', animateSections);
+      return () => window.removeEventListener('scroll', handleAnimateSections);
     }
-  }, []);
+  }, [animateSections]);
+
+  const filteredProjects = useMemo(() => {
+    if (debouncedFilters) {
+      const { project, tecnologies } = debouncedFilters;
+
+      const filteredProjects = projects.filter((item) => {
+        const regex = new RegExp(`^${project}`, 'i');
+        const matchName = regex.test(item.name);
+        let matchTecnologies = true;
+
+        if (tecnologies?.length) {
+          matchTecnologies = tecnologies.some((tecnology) =>
+            item.tecnologies.includes(tecnology.name!)
+          );
+        }
+
+        return matchName && matchTecnologies;
+      });
+
+      return filteredProjects;
+    }
+
+    return projects;
+  }, [debouncedFilters]);
 
   return (
     <main className={styles.mainContainer}>
@@ -171,85 +219,16 @@ export default function Home() {
           />
           <AutocompleteField
             label="Tecnologias"
-            name="categories"
+            name="tecnologies"
             control={control}
             multiple
             optionCompareKey="id"
             optionLabelKey="name"
-            options={[
-              {
-                id: 1,
-                name: 'Opção 1',
-              },
-              {
-                id: 2,
-                name: 'Opção 2',
-              },
-              {
-                id: 3,
-                name: 'Opção 3',
-              },
-              {
-                id: 4,
-                name: 'Opção 4',
-              },
-              {
-                id: 5,
-                name: 'Opção 5',
-              },
-              {
-                id: 6,
-                name: 'Opção 6',
-              },
-              {
-                id: 7,
-                name: 'Opção 7',
-              },
-              {
-                id: 8,
-                name: 'Opção 8',
-              },
-              {
-                id: 9,
-                name: 'Opção 9',
-              },
-              {
-                id: 10,
-                name: 'Opção 10',
-              },
-              {
-                id: 11,
-                name: 'Opção 11',
-              },
-              {
-                id: 12,
-                name: 'Opção 12',
-              },
-              {
-                id: 13,
-                name: 'Opção 13',
-              },
-              {
-                id: 14,
-                name: 'Opção 14',
-              },
-              {
-                id: 15,
-                name: 'Opção 15',
-              },
-              {
-                id: 16,
-                name: 'Opção 16',
-              },
-              {
-                id: 17,
-                name: 'Opção 17',
-              },
-            ]}
+            options={projectTecnologies}
           />
         </div>
         <div>
-          {projects.map(({ name, description, githubUrl, imageSrc, url, tecnologies }) => (
+          {filteredProjects.map(({ name, description, githubUrl, imageSrc, url, tecnologies }) => (
             <ProjectCard
               key={name}
               title={name}

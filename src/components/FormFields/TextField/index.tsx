@@ -55,7 +55,7 @@ export default function TextField({
           id={name}
           placeholder={placeholder ?? ''}
           value={value}
-          {...registerSettings}
+          {...registerSettings?.field}
           {...props}
           onChange={handleChange}
           onBlur={handleBlur}
