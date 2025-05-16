@@ -104,7 +104,7 @@ export default function Home() {
       <section id="introduction" aria-label="Apresentação">
         <div data-scroll="animeLeft">
           <h1>
-            Desenvolvedor Full Stack <span>&</span> UI/UX Designer
+            Desenvolvedor Front-End / Mobile <span>&</span> UI/UX Designer
           </h1>
           <CodeCard />
         </div>
