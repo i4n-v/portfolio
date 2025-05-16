@@ -27,7 +27,7 @@ function CodeCard({className = ""}: ICodeCardProps) {
         <span className={styles.order}>6</span>         <span className={styles.attribute}>&#34;Front End&#34;</span>,
       </pre>
       <pre>
-        <span className={styles.order}>7</span>         <span className={styles.attribute}>&#34;Back End&#34;</span>
+        <span className={styles.order}>7</span>         <span className={styles.attribute}>&#34;Mobile&#34;</span>
       </pre>
       <pre>
         <span className={styles.order}>8</span>       &#93;;

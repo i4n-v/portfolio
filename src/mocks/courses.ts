@@ -5,6 +5,8 @@ const courses: ICourse[] = [
   { name: 'TypeScript', workload: 11 },
   { name: 'UI Design', workload: 34 },
   { name: 'Web moderno', workload: 97 },
+  { name: 'JStack', workload: 80 },
+  { name: 'Next.js', workload: 11 },
 ];
 
 export default courses;
