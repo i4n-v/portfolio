@@ -1,12 +1,12 @@
 import { IExperiencie } from '@/models';
 
 const experiencies: IExperiencie[] = [
-  {
-    name: 'Desenvolvedor Front-End & Mobile Senior',
-    period: 'Atual',
-    description: `Desenvolvimento e manutenção de aplicações no nicho de educação, gerenciamento da equipe de desenvolvimento front-end em conjunto a liderança técnica e a definição técnica de fluxos, melhorias e novas implementações.`,
-    tecnologies: ['Figma', 'React', 'Next', 'React Native', 'Node'],
-  },
+  // {
+  //   name: 'Desenvolvedor Front-End Senior',
+  //   period: 'Atual',
+  //   description: `Desenvolvimento e manutenção de aplicações no nicho de educação, gerenciamento da equipe de desenvolvimento front-end em conjunto a liderança técnica e a definição técnica de fluxos, melhorias e novas implementações.`,
+  //   tecnologies: ['Figma', 'React', 'Next', 'React Native', 'Node'],
+  // },
   {
     name: 'Desenvolvedor Front-End & Mobile Pleno',
     period: 'Atual',
