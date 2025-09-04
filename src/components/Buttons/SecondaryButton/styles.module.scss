@@ -11,6 +11,7 @@
   @include mixins.shadow('sm');
   border: 2px solid variables.$primary-07;
   transition: 0.3s;
+  cursor: pointer;
 
   &:hover {
     color: variables.$primary-09;

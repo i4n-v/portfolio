@@ -12,7 +12,7 @@ const projects: IProject[] = [
       'Node',
       'Swagger',
       'TypeScript',
-      'Postgres',
+      'PostgreSQL',
       'Docker',
     ],
     imageSrc: '/images/booked.jpg',
@@ -69,12 +69,19 @@ const projects: IProject[] = [
   },
   {
     name: 'Animais fantásticos',
-    description:
-      'Uma simples landingpage com tudo que o HTML, CSS e JavaScript podem oferecer. :`)',
+    description: 'Uma simples landingpage com tudo que o HTML, CSS e JavaScript podem oferecer.',
     tecnologies: ['HTML', 'CSS', 'JavaScript'],
     imageSrc: '/images/fantastic-animals.jpg',
     url: 'https://fantastic-animals-blog.vercel.app/',
     githubUrl: 'https://github.com/i4n-v/fantastic-animals',
+  },
+  {
+    name: 'MyContacts',
+    description: 'Uma aplicação para gerenciar seus contatos.',
+    tecnologies: ['Node', 'Express', 'PostgreSQL', 'React', 'TypesCript', 'Styled-components'],
+    imageSrc: '/images/mycontacts.jpg',
+    url: 'https://d1ofs8emg0ja9a.cloudfront.net',
+    githubUrl: 'https://github.com/i4n-v/mycontacts',
   },
 ];
 

@@ -6,14 +6,19 @@ const tecnologies = [
   'HTML',
   'Next',
   'Express',
+  'Nest',
   'Node',
   'Mysql',
-  'Postgres',
+  'PostgreSQL',
+  'MongoDB',
   'TypeScript',
   'JavaScript',
   'Redis',
   'CSS',
   'Figma',
+  'AWS',
+  'GCP',
+  'Git',
 ];
 
 export default tecnologies;

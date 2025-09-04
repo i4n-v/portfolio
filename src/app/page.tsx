@@ -21,6 +21,7 @@ import { AutocompleteField } from '@/components/FormFields';
 import projectTecnologies from '@/mocks/projectTecnologies';
 import { useDebounce, useDebounceCallBack } from '@/hooks';
 import { z } from 'zod';
+import { Carousel } from '@/components';
 
 const validations = z.object({
   project: z.string(),
@@ -104,7 +105,7 @@ export default function Home() {
       <section id="introduction" aria-label="Apresentação">
         <div data-scroll="animeLeft">
           <h1>
-            Desenvolvedor Front-End<span>,</span> Mobile <span>&</span> UI/UX Designer
+            Desenvolvedor Full Stack <span>&</span> UI/UX Designer
           </h1>
           <CodeCard />
         </div>
@@ -192,17 +193,19 @@ export default function Home() {
           <h2 id="experiencies-title" className={styles.title}>
             Experiências
           </h2>
-          <div>
-            {experiencies.map(({ name, period, description, tecnologies }) => (
+          <Carousel
+            data={experiencies}
+            keyExtractor={({ name }) => name}
+            renderItem={({ name, company, period, description, tecnologies }) => (
               <ExperiencieCard
-                key={name}
                 title={name}
+                subtitle={company}
                 period={period}
                 description={description}
                 tags={tecnologies}
               />
-            ))}
-          </div>
+            )}
+          />
         </div>
       </section>
 

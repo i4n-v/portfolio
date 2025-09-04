@@ -4,12 +4,14 @@
 .experiencieCard {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 12px;
+  grid-template-rows: repeat(3, max-content) 1fr;
+  align-items: center;
+  column-gap: 12px;
   background: variables.$secondary-0;
   border-radius: 6px;
   width: 100%;
   max-width: 360px;
-  min-height: 160px;
+  height: 268px;
   padding: 20px;
   @include mixins.shadow('sm');
 
@@ -23,12 +25,17 @@
     @include mixins.font('primary-sm');
     color: variables.$secondary-11;
     grid-column: 1;
-    align-self: center;
   }
 
   .title + span {
     background: variables.$secondary-09;
-    align-self: center;
+  }
+
+  .subtitle {
+    @include mixins.font('primary-xs');
+    color: variables.$secondary-08;
+    grid-column: 1;
+    margin-bottom: 12px;
   }
 
   div {
@@ -37,5 +44,10 @@
     gap: 8px;
     grid-column: 1/-1;
     align-self: end;
+    margin-top: 12px;
+  }
+
+  @include mixins.responsive('sm') {
+    height: 392px;
   }
 }

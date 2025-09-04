@@ -250,7 +250,7 @@
 
   $more: false;
 
-  @for $i from 1 through 15 {
+  @for $i from 1 through 20 {
     .tecnologie-#{$i} {
       display: block;
       position: absolute;
@@ -265,7 +265,7 @@
       }
 
       @if ($i%2 == 0) {
-        left: 6% * $i;
+        left: 5% * $i;
 
         @if ($more == true) {
           top: 60px;
@@ -273,7 +273,7 @@
           top: 200px;
         }
       } @else {
-        left: 6% * $i;
+        left: 5% * $i;
 
         @if ($more == true) {
           bottom: 60px;
@@ -386,11 +386,6 @@
   & > div {
     width: 100%;
     max-width: variables.$max-container;
-
-    & > div {
-      display: flex;
-      gap: 40px;
-    }
   }
 
   @include mixins.responsive('lg') {

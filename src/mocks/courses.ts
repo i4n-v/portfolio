@@ -7,6 +7,8 @@ const courses: ICourse[] = [
   { name: 'Web moderno', workload: 97 },
   { name: 'JStack', workload: 80 },
   { name: 'Next.js', workload: 11 },
+  { name: 'AWS', workload: 80 },
+  { name: 'SQL', workload: 12 },
 ];
 
 export default courses;
