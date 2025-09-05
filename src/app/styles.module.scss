@@ -379,13 +379,13 @@
   padding: 120px 20px 180px 20px;
 
   .title {
-    margin-bottom: 40px;
+    margin: 0 auto 40px auto;
     color: variables.$secondary-0;
+    max-width: variables.$max-container;
   }
 
   & > div {
     width: 100%;
-    max-width: variables.$max-container;
   }
 
   @include mixins.responsive('lg') {
